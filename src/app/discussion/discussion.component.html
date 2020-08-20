@@ -1,0 +1,67 @@
+<app-menu></app-menu>
+<html>
+	<head>
+		<title>Chat</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js"></script>
+	</head>
+	<!--Coded With Love By Mutiullah Samim-->
+	<body>
+		<div class="container-fluid h-100">
+			<div class="row justify-content-center h-100">
+				<div class="col-md-8 col-xl-6 chat">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span> {{Prenom }} {{Nom}} </span>
+									<p></p>
+								</div>
+							</div>
+							<div class="infoMessage">
+								<h3> {{Titre}} </h3>
+								<h4> {{Description}} </h4>
+
+							</div>
+						</div>
+
+						<div class="card-body msg_card_body">
+							<div class="justify-content-start mb-4">
+									
+								<div class="img_cont_msg">
+									<img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg">
+								</div>
+								<div *ngFor="let com of comments"  style="font-size: 25px;" class="msg_cotainer">
+									<label style="font-size: 10px;">{{com.PrenomExp }} {{com.NomExp}}</label>
+									<br>
+									{{com.message}}
+									<!-- <span class="msg_time">8:40 AM, Today</span> -->
+								</div> <br>
+							</div>
+							
+						</div>
+						<div *ngFor="let p of profils" class="card-footer">
+							<div class="input-group">
+								<div class="input-group-append">
+									<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+								</div>
+								<textarea [(ngModel)]="message" name="message" class="form-control type_msg" placeholder="Ecrivez votre message ici..."></textarea>
+								<div class="input-group-append">
+									<button class="input-group-text send_btn" (click)="Envoyer(p.Prenom, p.Nom)">Envoyer<i class="fas fa-location-arrow"></i></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

@@ -1,0 +1,34 @@
+<div>
+        <h2>liste des Consultations</h2>
+        <br>
+        <form class="form-inline">
+            <input id="searchtext"class="form-control"name="searchInput"placeholder="search" #searchInput="ngModel" [(ngModel)]="searchText" style="width:80%;">
+            <button id="contenair"class="btn btn-outlin-primary" (click)="searchText=''">Rechercher</button>
+        </form>
+    </div>
+    <table class="table table-sm">
+        <thead>
+            <th>Nom</th>
+            <th>Tel</th>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Jour</th>
+        </thead>
+        <!-- <ng-container *ngFor="let examen of examen ">
+            <tr class="table-dark" *ngIf="filterCondition(examen)">
+                <td>{{conseil.Nom}}</td>
+                <td>{{conseil.Tel}}</td>
+                <td>{{conseil.Jour}}</td>
+                <td>{{conseil.Type}}</td>
+                <td>{{conseil.Date}}</td>
+            <form class="form-inline">
+                    <button class="btn btn-outlin-info" (click)="Editer()">Editer</button>
+                    <button class="btn btn-outlin-danger" (click)="Supprimer()">Supprimer</button>
+                    <button class="btn btn-outlin-danger" (click)="Ajouter()">Ajouter</button>
+            </form>
+            </tr>
+        </ng-container> -->
+    
+    </table>
+    
+

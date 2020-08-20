@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div class="container">
+    <form action="/action_page.php" class="px-4 py-3">
+    <h2>Prendre RDV</h2>
+    <div class="form-row">
+            <br>
+            <div class="form-group col-md-6">
+                <label for="date">Date</label>
+                <input [(ngModel)]="Date" [ngModelOptions]="{standalone: true}" name="Date" type="date" class="form-control" id="date" placeholder="Enter date">
+            </div>
+        <div class="form-group col-md-6">
+                <label for="heure">Heure</label>
+                <input [(ngModel)]="Heure" [ngModelOptions]="{standalone: true}" name="Heure" type="text" class="form-control" id="heure" placeholder="Enter heure">
+            </div>
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="medecin">Medecin</label>
+            <select  [(ngModel)]="Medecin" [ngModelOptions]="{standalone: true}" name="Medecin" type="text" class="form-control" id="medecin" > 
+            <!-- <select name="nom" size="1"> -->
+                <option>Pediatrie
+                <option>Pneumologie
+                <option>Radiologie
+                <option>Sage-femme
+                <option>gynecologue-obstetricien
+                <option>Dermatologue
+            </select>
+        </div>
+        </div>
+    <br>
+    <button class="btn btn-primary" (click)="Enregistrer()">Enregistré</button>
+</form>
+</div>
+<div>
+    <button class="btn float-left btn-primary" style="margin-left:800px" (click)="list()">voir la liste-rendez-vous</button>
+</div>

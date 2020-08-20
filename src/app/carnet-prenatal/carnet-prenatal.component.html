@@ -1,0 +1,91 @@
+<app-menu></app-menu>
+<section class="regervation_part section_padding">
+    <div class="container">
+        <div class="row align-items-center regervation_content">
+            <div class="col-lg-7">
+                <div class="regervation_part_iner">
+                    <form>
+                        <h2>Carnet-prenatal-Femme</h2>
+                        <button style="float: right" class="btn btn-primary " (click)="listecpn()">voir la liste</button>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <label for="nom">Nom</label>
+                                <input type="text" class="form-control" id="inputNom4"  [(ngModel)]="Nom" name="Nom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="prenom">Prenom</label>
+                                <input type="text" class="form-control" id="inputPrenom4"  [(ngModel)]="Prenom" name="Prenom">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="age">AgeGrossesse</label>
+                                <input type="text" class="form-control" id="inputAgeGrossesse4"  [(ngModel)]="AgeGrossesse" name="AgeGrossesse">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="date">DateNaissance</label>
+                                <input type="date" class="form-control" id="inputDateNaissance4"  [(ngModel)]="DateNaissance" name="DateNaissance">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="heure">HeureNaissance</label>
+                                <input type="time" class="form-control" id="inputHeureNaissance4"  [(ngModel)]="HeureNaissance" name="HeureNaissance"  placeholder="HeureNaissance">
+                            </div>
+                           
+                            <div class="form-group col-md-6">
+                                    <label for="poids">Poids</label>
+                                <input type="text" class="form-control" id="inputPoids4"  [(ngModel)]="Poids" name="Poids">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="type">TypeAccouchement</label>
+                                <input type="text" class="form-control" id="inputTypeAccouchement4"  [(ngModel)]="TypeAccouchement" name="TypeAccouchement">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="sexe">SexeEnfant</label>
+                                <input type="text" class="form-control" id="inputSexeEnfant4"  [(ngModel)]="SexeEnfant" name="SexeEnfant" >
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="lieu">LieuNaissance</label>
+                                <input type="text" class="form-control" id="inputLieuNaissance4"  [(ngModel)]="LieuNaissance" name="LieuNaissance" >
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="taille">Taille</label>
+                                <input type="text" class="form-control" id="inputTaille4"  [(ngModel)]="Taille" name="Taille" >
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="date">DateSortie</label>
+                                <input type="date" class="form-control" id="inputDateSortie4"  [(ngModel)]="DateSortie" name="DateSortie"  placeholder="DateSortie">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="mode">ModeAlimentation</label>
+                                <input type="text" class="form-control" id="inputModeAlimentation4"  [(ngModel)]="ModeAlimentation" name="ModeAlimentation">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="nature">NatureExamen</label>
+                                <input type="text" class="form-control" id="inputNatureExamen4"  [(ngModel)]="NatureExamen" name="NatureExamen" >
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                    <label for="resultat">ResultatExamen</label>
+                                <input type="text" class="form-control" id="inputResultatExamen4"  [(ngModel)]="ResultatExamen" name="ResultatExamen">
+                            </div>
+                          
+                            <div class="form-group col-md-6">
+                                    <label for="rendezvous">RendezVous</label>
+                                <input type="text" class="form-control" id="inputRendezVous4"  [(ngModel)]="RendezVous" name="RendezVous">
+                            </div>
+                            
+                        </div>
+                        
+                            <button class="btn btn-primary " (click)="Ajouter()">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

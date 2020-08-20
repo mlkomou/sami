@@ -1,0 +1,43 @@
+
+<div class="card">
+    <div class="card-body">
+        <!-- <form [formGroup]="angFom" novalidate>
+            <div class="form-group">
+                <label class="col-md-4">Nom</label>
+                <input type="test" class="form-control" name="nom" formControlName="nom"#nom/>
+            </div>
+            <div *ngIf="angForm.controls['nom'].invalid && (angForm.controls['nom'].dirty || angForm.controls['nom'].touched" class="alert alert-danger">
+                <div *ngIf="angForm.controls['nom'].errors.required">
+                    Nom is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">Prenom</label>
+                <label class="col-md-4">Nom</label>
+                <input type="test" class="form-control" name="nom" formControlName="nom"#nom/>
+            </div>
+            <div *ngIf="angForm.controls['nom'].invalid && (angForm.controls['nom'].dirty || angForm.controls['nom'].touched" class="alert alert-danger">
+                <div *ngIf="angForm.controls['nom'].errors.required">
+                    Prenom is required
+                </div>
+            </div>
+            <div class="form-group">
+            <button (click)="addUser(Nom.value, Prenom.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Create User</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+<div class="card">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label class="col-md-4">User Nom</label>
+                <input type="text" class="form-control" name="user_nom"/>
+            </div>
+            <div class="form-group">
+                    <label class="col-md-4">User Prenom</label>
+                    <input type="text" class="form-control" name="user_prenom"/>
+            </div>
+        </form>
+    </div>
+</div>

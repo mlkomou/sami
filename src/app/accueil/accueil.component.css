@@ -1,0 +1,6 @@
+li.nav-link::hover{
+    cursor: pointer;
+}
+a {
+    cursor: pointer;
+}

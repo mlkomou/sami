@@ -1,0 +1,41 @@
+<form class="navbar-form navbar-left">
+        <div class="input-group">
+            <input type="text" value="" class="form-control" placeholder="search..." #seachInput="ngModel" name="seachText" [(ngModel)]="seachText">
+            <span class="input-group-btn"><button type="button" (click)="searchText=''" class="btn btn-primary">Go</button></span>
+        </div>
+    </form>
+    <div class="col-md-12">
+        <!-- BORDERED TABLE-->
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">liste-conseil</h3>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <th>index</th>
+                        <th>Titre</th>
+                        
+                        
+                    </thead>
+                    <tbody *ngFor="let conseil of  conseils; index as i">
+                            <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{conseil.Titre}}</td>
+                        </tr>
+                        <!-- <div *ngIf="EditState && rdvToedit.id == rdv.id" class="table table-bordered">
+    
+                            <input type="text" class="form-control" [(ngModel)]="rdv.Nom" name="rdv.Nom" [ngModelOptions]="{standalone: true}">
+                            <input type="text" class="form-control" [(ngModel)]="rdv.Prenom" name="rdv.Prenom" [ngModelOptions]="{standalone: true}">
+                            <input type="text" class="form-control" [(ngModel)]="rdv.Medecin" name="rdv.Medecin" [ngModelOptions]="{standalone: true}">
+    
+                            <button (lick)="update(rdv, rdv.id)" class="btn btn-success save">
+                                <i class="fa fa-update"></i>Mettre à jour
+                            </button>
+                            <button (click)="annuler()" style="margin-left: 10px" class="btn btn-info annuler">Annuler</button>
+                        </div> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

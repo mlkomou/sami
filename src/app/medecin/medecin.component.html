@@ -1,0 +1,145 @@
+<body *ngIf="isListe == false">  
+    <ngx-alerts></ngx-alerts>
+
+     <section class="banner_part">
+    <div class="container">
+        <div style="cursor: pointer;" class="regerv_btn">
+            <a class="btn_2" (click)="back()">Retour</a>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-12 col-xl-12">
+               
+                <div class="banner_text_iner">
+                    <section class="regervation_part section_padding">
+                        <div class="container">
+                            <div class="row align-items-center regervation_content">
+                                
+                                <div class="col-lg-7">
+                                   
+                                    <div class="regervation_part_iner">
+                                       
+                                        <form>
+                                            <h2>Enregistrement des medecins</h2>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="prenom" [(ngModel)]="prenom" class="form-control" id="inputEmail4" placeholder="Prénom">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" name="nom" [(ngModel)]="nom" class="form-control" id="inputEmail4" placeholder="Nom">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="number" name="tel" [(ngModel)]="tel" class="form-control" id="inputPassword4"
+                                                        placeholder="Téléphone">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="email" name="mail" [(ngModel)]="mail" class="form-control" id="inputEmail4" placeholder="Adresse email">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="password" name="motDePasse" [(ngModel)]="motDePasse" class="form-control" id="inputPassword4"
+                                                        placeholder="Mot de passe">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <select name="genre" [(ngModel)]="genre" class="form-control" id="Select">
+                                                        <option value="Genre" selected>Genre</option>
+                                                        <option value="Homme">Homme</option>
+                                                        <option value="Femme">Femme</option>
+                                                       
+                                                    </select>
+                                                </div>
+                                              
+                                                <div class="form-group col-md-12">
+                                                    <textarea name="biographie" [(ngModel)]="biographie" class="form-control" id="Textarea" rows="4"
+                                                        placeholder="Biographie"></textarea>
+                                                </div>
+                                            </div>
+                                            <div style="cursor: pointer;" class="regerv_btn">
+                                                <a class="btn_2" (click)="inscrireMed()">Enregistrer</a>
+                                                <a class="btn_2" style="margin-left: 30px;" (click)="voirListe()">Voir la liste</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-6">
+                                    <div class="reservation_img">
+                                        <img src="../../assets/img/reservation.png" alt="" class="reservation_img_iner">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="banner_text">
+                    <div class="banner_text_iner">
+                        <h1>Medecin</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-7">
+                <div class="banner_img">
+                    <img src="../../assets/img/c.png" alt="">
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+   
+    </body>
+
+    <div>
+        <table *ngIf="isListe == true" class="table">
+        
+            <thead>
+               
+                <div style="cursor: pointer; margin-bottom: 30px;" class="row">
+                    <div class="col-lg-6">
+                        <a class="btn_2" (click)="retour()">Retour</a>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+                            <input [(ngModel)]="term" type="text" placeholder="Recherche..." name="search2">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                          </form>
+                    </div>
+                </div>
+                <h2>Liste des medecins</h2>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Mail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let med of medecins | filter:term; let i = index">
+                <th scope="row"> {{i+1}} </th>
+                <td>{{med.Prenom}}</td>
+                <td>{{med.nom}}</td>
+                <td> {{med.genre}} </td>
+                <td> {{med.mail}} </td>
+              </tr>
+            </tbody>
+           
+          </table>
+    </div>
+    
+      <footer class="footer-area">
+      
+        <div class="copyright_part">
+            <div class="container">
+                <div class="row align-items-center">
+                    <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://www.tuwindi.org" target="_blank">Tuwindi</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                    <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
+                        <a><i class="ti-facebook"></i></a>
+                        <a><i class="ti-twitter"></i> </a>
+                        <a><i class="ti-instagram"></i></a>
+                        <a><i class="ti-skype"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
