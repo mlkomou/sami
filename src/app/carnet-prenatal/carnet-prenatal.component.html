@@ -1,21 +1,25 @@
-<app-menu></app-menu>
+<!-- <app-menu></app-menu> -->
 <section class="regervation_part section_padding">
     <div class="container">
+        <div class="col-lg-6" style="cursor: pointer;">
+            <a class="btn_2" (click)="retour()">Retour</a>
+        </div>
         <div class="row align-items-center regervation_content">
-            <div class="col-lg-7">
+            <div class="col-lg-12">
                 <div class="regervation_part_iner">
                     <form>
                         <h2>Carnet-prenatal-Femme</h2>
-                        <button style="float: right" class="btn btn-primary " (click)="listecpn()">voir la liste</button>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                    <label for="nom">Nom</label>
-                                <input type="text" class="form-control" id="inputNom4"  [(ngModel)]="Nom" name="Nom">
+                                    <label for="nom">Patiente</label>
+                                    <select (change)="getPatValue($event)" [(ngModel)]="patiente" class="form-control" name="patiente">
+                                        <option [ngValue]="pat" *ngFor="let pat of patientes"> {{pat.Prenom }} {{pat.Nom}} </option>
+                                    </select>
                             </div>
-                            <div class="form-group col-md-6">
+                            <!-- <div class="form-group col-md-6">
                                     <label for="prenom">Prenom</label>
                                 <input type="text" class="form-control" id="inputPrenom4"  [(ngModel)]="Prenom" name="Prenom">
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-6">
                                     <label for="age">AgeGrossesse</label>
                                 <input type="text" class="form-control" id="inputAgeGrossesse4"  [(ngModel)]="AgeGrossesse" name="AgeGrossesse">
@@ -82,7 +86,9 @@
                             
                         </div>
                         
-                            <button class="btn btn-primary " (click)="Ajouter()">Ajouter</button>
+                            <button class="btn btn-success " (click)="Ajouter()">Ajouter</button>
+                            <button style="margin-left: 35px" class="btn btn-primary " (click)="listecpn()">voir la liste</button>
+
                     </form>
                 </div>
             </div>

@@ -21,11 +21,12 @@ export class ForumComponent implements OnInit {
   Description: String;
   Nom: String;
   Prenom: String;
+  currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
 
 
-
-  id: string;
-  profils: any[]
+  user: any;
+  profils: any[];
+  foras: any[];
   
 
   constructor(private aft: AngularFirestore,
@@ -33,26 +34,29 @@ export class ForumComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private aftAuth: AngularFireAuth,
     ) { 
-      this.id = this.aftAuth.auth.currentUser.uid;
+      this.user = this.currentUser[0];
+      console.log('user', this.currentUser);
+      
     //  this.idPatiente = this.activatedRoute.snapshot.paramMap.get('id');
     //  this.NomPatiente = this.activatedRoute.snapshot.paramMap.get('Nom');
     //  this.PrenomPatiente = this.activatedRoute.snapshot.paramMap.get('Prenom');
      
     }
+    retour() {
+      this.router.navigate(['accueil']);
+    }
 
   ngOnInit() {
-    this.aft.collection('User').doc('profil').collection(this.id).snapshotChanges().pipe(
+    this.aft.collection('forum').snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
-    ).subscribe((profils) => {
-       this.profils=profils
-      for(let i=0; i<this.profils.length; i++) {
-        this.Nom = this.profils[i].Nom;
-        this.Prenom = this.profils[i].Prenom;
-      }
+    ).subscribe((forum) => {
+       this.foras = forum;
+       console.log(this.foras);
+       
     });
  
 
@@ -62,16 +66,14 @@ export class ForumComponent implements OnInit {
   }
   Publier(){
     this.aft.collection('forum').add({
-      Titre: this.Titre,
      Description: this.Description,
-     Nom: this.Nom,
-     Prenom: this.Prenom,
-     idExp: this.id
+     createAt: new Date(),
+     user: this.currentUser[0]
     //  NomPatiente: this.NomPatiente,
     //  PrenomPatiente: this.PrenomPatiente,
       
     }).then(() => {
-      alert('forum publier');
+      this.Description = null;
     });
   }
 

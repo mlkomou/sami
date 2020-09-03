@@ -1,1 +1,5 @@
-app-menu{margin-bottom: 80px}
+/* app-menu{margin-bottom: 80px} */
+
+label {
+    color: white;
+}

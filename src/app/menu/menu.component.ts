@@ -20,22 +20,22 @@ profils: any[];
     private aft:AngularFirestore,
     private afAuth: AngularFireAuth
 ) { 
-this.uid = this.afAuth.auth.currentUser.uid;
+// this.uid = this.afAuth.auth.currentUser.uid;
 }
 
 
   ngOnInit() {
-    this.aft.collection('User').doc('profil').collection(this.uid).snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as User;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    ).subscribe((profils) => {
-      this.profils = profils;
-      console.log(profils);
+    // this.aft.collection('User').doc('profil').collection(this.uid).snapshotChanges().pipe(
+    //   map(actions => actions.map(a => {
+    //     const data = a.payload.doc.data() as User;
+    //     const id = a.payload.doc.id;
+    //     return { id, ...data };
+    //   }))
+    // ).subscribe((profils) => {
+    //   this.profils = profils;
+    //   console.log(profils);
       
-    });
+    // });
   }
   conseil(){
     this.router.navigate(['conseil']);

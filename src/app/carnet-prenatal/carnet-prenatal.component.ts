@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { User } from 'firebase';
 
 @Component({
   selector: 'app-carnet-prenatal',
@@ -8,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./carnet-prenatal.component.css']
 })
 export class CarnetPrenatalComponent implements OnInit {
-  Nom: String;
-  Prenom: String;
+  // Nom: String;
+  // Prenom: String;
   AgeGrossesse: String;
   DateNaissance: Date;
   HeureNaissance: String;
@@ -23,19 +25,40 @@ export class CarnetPrenatalComponent implements OnInit {
   NatureExamen: String;
   ResultatExamen: String;
   RendezVous: String;
+  patientes: any[];
+  patiente: any;
 
 
   constructor(private aft: AngularFirestore, private router:Router) { }
 
   ngOnInit() {
+    this.getPatiente();
 }
+getPatValue(ev) {
+  // console.log(ev);
+  console.log(this.patiente);
+  
+  
+}
+getPatiente() {
+  this.aft.collection('utilisateurs', ref => ref.where('Statut', '==', 'Patiente')).snapshotChanges().pipe(
+    map(actions => actions.map(a => {
+      const data = a.payload.doc.data() as User;
+      const id = a.payload.doc.id;
+      return { id, ...data };
+    }))
+  ).subscribe((res) => {
+    console.log(res);
+    this.patientes = res;
+  });
+}
+
 listecpn(){
   this.router.navigate(['listecpn'])
 }
     Ajouter() {
       this.aft.collection('carnetprenatal').add({
-        Nom: this.Nom,
-        Prenom: this.Prenom,
+       patiente: this.patiente,
         AgeGrossesse: this.AgeGrossesse,
         DateNaissance: this.DateNaissance,
         HeureNaissance: this.HeureNaissance,
@@ -50,7 +73,25 @@ listecpn(){
         ResultatExamen: this.ResultatExamen,
         RendezVous: this.RendezVous,
     }).then(() => {
-      alert('carnetprenatal Ajouter');
+      this.patiente = null;
+     this.AgeGrossesse = null,
+     this.DateNaissance = null,
+    this.HeureNaissance = null
+      this. Poids = null
+    this.TypeAccouchement = null
+      this.SexeEnfant = null
+      this.LieuNaissance = null
+     this.Taille = null
+   this.DateSortie = null
+      this.ModeAlimentation = null
+     this.NatureExamen = null
+      this.ResultatExamen = null
+      this.RendezVous = null
+      alert('carnetprenatal Ajouté');
     });
+  }
+
+  retour() {
+    this.router.navigate(['accueil']);
   }
 }

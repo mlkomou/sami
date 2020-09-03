@@ -53,7 +53,7 @@ uid: string;
     this.router.navigate(['listpatiente']) 
   }
   forum(){
-    this.router.navigate(['forum'])
+    this.router.navigate(['forum']);
   }
   consultations(){
     this.router.navigate(['consultation'])
