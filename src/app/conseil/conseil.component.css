@@ -1,5 +1,7 @@
-app-menu{
-    margin-bottom: 80px
-}
-
-                  
+i {
+    font-size: 30px;
+    float: right;
+  }
+  .titre, .retour {
+      display: inline-table;
+  }

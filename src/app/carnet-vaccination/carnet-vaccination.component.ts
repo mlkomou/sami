@@ -29,4 +29,7 @@ export class CarnetVaccinationComponent implements OnInit {
       alert('carnet-vaccination Ajouter');
     });
   }
+  retour() {
+    this.router.navigate(['consultation']);
+  }
 }

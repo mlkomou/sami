@@ -22,21 +22,24 @@ export class ConseilComponent implements OnInit {
   
   id: string;
   profils: any[]
-  
+  currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+  user = this.currentUser[0];
   
 
 
   constructor(private aft: AngularFirestore,
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    private aftAuth: AngularFireAuth,
     ) { 
-      this.id = this.aftAuth.auth.currentUser.uid;
      
     }
 
+    retour() {
+      this.router.navigate(['accueil']);
+    }
+
   ngOnInit() {
-    this.aft.collection('User').doc('profil').collection(this.id).snapshotChanges().pipe(
+    this.aft.collection('User').doc('profil').collection(this.user.id).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;

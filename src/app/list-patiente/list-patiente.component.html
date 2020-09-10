@@ -1,59 +1,38 @@
 <form class="navbar-form navbar-left">
         <div class="input-group">
+                        <span class="input-group-btn"><button type="button" (click)="retour()" class="btn btn-primary">
+                            <i class="ti-arrow-left"></i>
+                        </button></span>
             <input type="text" name="seachText" class="form-control" placeholder="search..." #seachInput="ngModel" [(ngModel)]="seachText">
-            <span class="input-group-btn"><button type="button" (click)="searchText=''" class="btn btn-primary">Go</button></span>
         </div>
     </form>
     <div class="col-md-12">
         <!-- BORDERED TABLE-->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">list-patiente</h3>
+                <h3 class="panel-title">Liste des patientes
+                    <button style="margin-left: 200px;" class="btn btn-primary" (click)="list()">Consulter les RDV</button>
+                </h3>
             </div>
             <div class="panel-body">
                 <table class="table table-bordered">
                     <thead>
-                        <th>index</th>
+                        <th>#</th>
                         <th>Nom</th>
                         <th>Prenom</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Genre</th>
                         <th>Tel</th>
                         <th>Profession</th>
-                        <th>Statut</th>
                         <th>Date</th>
                     </thead>
-                    <tbody (click)="Prendre(patiente)" *ngFor="let patiente of listpatientes; index as i">
-                        <tr>
+                    <tbody (click)="Prendre(patiente)" *ngFor="let patiente of listpatientes | filter:seachText; index as i">
+                        <tr style="cursor: pointer;">
                             <td>{{i+1}}</td>
                             <td>{{patiente.Nom}}</td>
                             <td>{{patiente.Prenom}}</td>
-                            <td>{{patiente.Email}}</td>
-                            <td>{{patiente.Password}}</td>
-                            <td>{{patiente.Genre}}</td>
                             <td>{{patiente.Tel}}</td>
                             <td>{{patiente.Profession}}</td>
-                            <td>{{patiente.Statut}}</td>
-                            <td>{{patiente.Date}}</td>
-                           
+                            <td>{{patiente.Date | date}}</td>
                         </tr>
-                        <!-- <div *ngIf="EditState && patienteToedit.id == patiente.id" class="table table-bordered">
-    
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Nom" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Prenom" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Email" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Password" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Genre" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Tel" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Profession" [ngModelOptions]="{standalone: true}">
-                            <input type="text" class="form-control" [(ngModel)]="patiente.Date" [ngModelOptions]="{standalone: true}">
-    
-                            <button (lick)="update(patiente, patiente.id)" class="btn btn-success save">
-                                <i class="fa fa-update"></i>Mettre à jour
-                            </button>
-                            <button (click)="annuler()" style="margin-left: 10px" class="btn btn-info annuler">Annuler</button>
-                        </div> -->
                     </tbody>
                 </table>
             </div>

@@ -1,16 +1,18 @@
-<app-menu></app-menu>
 <html>     
-            <section class="regervation_part section_padding">
+            <!-- <section class="regervation_part section_padding"> -->
                   <div class="container">
+                    <div style="cursor: pointer;" class="col-lg-1 retour">
+                        <i class="ti-arrow-left" (click)="retour()"></i>
+                    </div>
+                    <h2 class="titre">CONSEIL</h2>
                       <div class="row align-items-center regervation_content">
                           <div class="col-lg-7">
                               <div class="regervation_part_iner">
                                   <form>
-                                      <h2>CONSEIL</h2>
-                                            <button style="float: right" class="btn btn-primary " (click)="listeconseil()">voir la liste</button>
+                                      
                                             <div class="form-row">
+                                          <div class="form-group col-md-12">
                                             <label for="titre">Titre</label>
-                                          <div class="form-group col-md-6">
                                               <input  type="text" class="form-control" id="inputTitre4" [(ngModel)]="Titre" name="Titre" placeholder="Titre">
                                           </div>
                                           <div class="form-group col-md-12">
@@ -20,13 +22,14 @@
                                           </div>
                                       </div>
                                       
-                                          <button class="btn btn-primary " (click)="Enregistrer()">Enregistrer</button>
+                                          <button class="btn btn-primary" style="margin-right: 20px;" (click)="Enregistrer()">Enregistrer</button>
+                                          <button class="btn btn-primary " (click)="listeconseil()">Voir la liste</button>
                                   </form>
                               </div>
                           </div>
                              
                       </div>
                   </div>
-               </section>
+               <!-- </section> -->
 </html>
   

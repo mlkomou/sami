@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consultation',
@@ -14,21 +15,17 @@ export class ConsultationComponent implements OnInit {
   Nombre: String;
   Heure: String;
   Jour: String;
-  constructor(private afStore: AngularFirestore) { }
+  constructor(private afStore: AngularFirestore, private router: Router) { }
 
   ngOnInit() {
   }
-  Enregister() {
-    this.afStore.collection('consultation').add({
-      Nom: this.Nom,
-      Prénom: this.Prénom,
-      Email: this.Email,
-      Nombre: this.Nombre,
-      Heure: this.Heure,
-      Date: this.Date,
-      Jour: this.Jour,
-    }).then(() => {
-      alert('consultation enregistré');
-    });
-  }
+ cpn() {
+  this.router.navigate(['carnetprenatal']);
+ }
+ cv() {
+   this.router.navigate(['carnetvaccination']);
+ }
+ retour() {
+  this.router.navigate(['accueil']);
+}
 }

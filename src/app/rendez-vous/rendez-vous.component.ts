@@ -8,15 +8,14 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./rendez-vous.component.css']
 })
 export class RendezVousComponent implements OnInit {
-  Date: Date;
+  date: Date;
   Heure:number;
-  Medecin: String;
 
   idPatiente: string;
   NomPatiente: string;
   PrenomPatiente: string;
-  
-
+  currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+  medecin = this.currentUser[0];
 
   constructor(private aft: AngularFirestore,
                private router:Router,
@@ -30,19 +29,22 @@ export class RendezVousComponent implements OnInit {
 
   ngOnInit() {
   }
-  list(){
-    this.router.navigate(['listerendezvous'])
-  }
+ 
   Enregistrer() {
-    this.aft.collection('rendezvous').doc(this.idPatiente).collection(this.idPatiente).add({
-      Date: this.Date,
+    this.aft.collection('rendezvous').doc(this.medecin.id).collection(this.medecin.id).add({
+      Date: this.date,
       Heure: this.Heure,
-      Medecin: this.Medecin,
+      Medecin: this.medecin,
       NomPatiente: this.NomPatiente,
       PrenomPatiente: this.PrenomPatiente
 
     }).then(() => {
       alert('Rendez vous enregistré');
+      this.date = null;
+      this.Heure = null;
+      this.NomPatiente = null;
+      this.date = null;
+      this.PrenomPatiente = null;
     });
   }
 }

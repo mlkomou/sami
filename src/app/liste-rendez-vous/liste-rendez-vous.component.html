@@ -1,30 +1,34 @@
-<app-menu></app-menu>
 <form class="navbar-form navbar-left">
     <div class="input-group">
+        <span class="input-group-btn"><button type="button" (click)="retour()" class="btn btn-primary">
+            <i class="ti-arrow-left"></i>
+        </button></span>
         <input type="text" value="" class="form-control" placeholder="search..." #seachInput="ngModel" name="seachText" [(ngModel)]="seachText">
-        <span class="input-group-btn"><button type="button" (click)="searchText=''" class="btn btn-primary">Go</button></span>
+        <!-- <span class="input-group-btn"><button type="button" (click)="searchText=''" class="btn btn-primary">Go</button></span> -->
     </div>
 </form>
 <div class="col-md-12">
     <!-- BORDERED TABLE-->
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">liste-rendez-vous</h3>
+            <h3 class="panel-title">Liste-rendez-vous</h3>
         </div>
         <div class="panel-body">
             <table class="table table-bordered">
                 <thead>
-                    <th>index</th>
+                    <th>#</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
                     <th>Heure</th>
                     <th>Date</th>
-                    <th>Medecin</th>
                 </thead>
-                <tbody *ngFor="let rdv of redvs; index as i">
+                <tbody *ngFor="let rdv of redvs | filter: seachText; index as i">
                     <tr>
                         <td>{{i+1}}</td>
+                        <td> {{rdv.PrenomPatiente}} </td>
+                        <td> {{rdv.NomPatiente}} </td>
                         <td>{{rdv.Heure}}</td>
-                        <td>{{rdv.Date}}</td>
-                        <td>{{rdv.Medecin}}</td>
+                        <td>{{rdv.Date | date}}</td>
                     </tr>
                     <!-- <div *ngIf="EditState && rdvToedit.id == rdv.id" class="table table-bordered">
 

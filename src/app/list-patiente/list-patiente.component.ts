@@ -56,6 +56,8 @@ export class ListPatienteComponent implements OnInit {
     }))
   ).subscribe((patiente) => {
     this.listpatientes = patiente;
+    console.log(this.listpatientes);
+    
   });
 }
 Edit(event, listpatiente: User){
@@ -75,5 +77,13 @@ return listpatiente.Nom.toLowerCase().indexOf(this.searchText.toLocaleLowerCase(
 
 Prendre(patiente) {
 this.router.navigate(['rendezvous', patiente.id, patiente.Nom, patiente.Prenom]);
+}
+
+retour() {
+  this.router.navigate(['accueil']);
+}
+
+list(){
+  this.router.navigate(['listerendezvous'])
 }
 }

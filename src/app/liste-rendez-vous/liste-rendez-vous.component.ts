@@ -29,18 +29,21 @@ export class ListeRendezVousComponent implements OnInit {
 
   redvs: any[];
   searchText:string ="";
-  uid: string;
+  currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+  medecin = this.currentUser[0];
 
   constructor(private aft:AngularFirestore,
      private router:Router,
      private aftAuth:AngularFireAuth
      ) { 
-       this.uid = this.aftAuth.auth.currentUser.uid;
+     }
+
+     retour() {
+       this.router.navigate(['listpatiente']);
      }
 
   ngOnInit() {
-    let uid = this.aftAuth.auth.currentUser.uid;
-        this.aft.collection('rendezvous').doc(uid).collection(uid).snapshotChanges().pipe(
+    this.aft.collection('rendezvous').doc(this.medecin.id).collection(this.medecin.id).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Rdvs;
         const id = a.payload.doc.id;

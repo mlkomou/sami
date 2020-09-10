@@ -92,6 +92,6 @@ listecpn(){
   }
 
   retour() {
-    this.router.navigate(['accueil']);
+    this.router.navigate(['consultation']);
   }
 }
