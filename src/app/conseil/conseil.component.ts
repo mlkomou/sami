@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { map } from 'rxjs/operators';
 import { User } from 'firebase';
+import { AlertService } from 'ngx-alerts';
 
 
 
@@ -19,19 +20,21 @@ export class ConseilComponent implements OnInit {
   Nom: string;
   Prenom: string;
 
-  
+
   id: string;
   profils: any[]
   currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
   user = this.currentUser[0];
-  
+
 
 
   constructor(private aft: AngularFirestore,
     private router:Router,
     private activatedRoute: ActivatedRoute,
-    ) { 
-     
+    private alertService: AlertService
+    ) {
+     console.log(this.user);
+
     }
 
     retour() {
@@ -52,7 +55,7 @@ export class ConseilComponent implements OnInit {
         this.Prenom = this.profils[i].Prenom;
       }
     });
- 
+
 
   }
   listeconseil(){
@@ -64,10 +67,12 @@ export class ConseilComponent implements OnInit {
       Conseil: this.Contenu,
       Nom: this.Nom,
       Prenom: this.Prenom,
-      idExp: this.id,
+      idExp: this.user.id,
 
     }).then(() => {
-      alert('conseil enregistré');
+      this.alertService.success('conseil enregistré');
+      this.Titre = null;
+      this.Contenu = null;
     });
   }
 }

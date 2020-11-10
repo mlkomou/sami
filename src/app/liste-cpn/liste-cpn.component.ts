@@ -17,6 +17,8 @@ export class ListeCPNComponent implements OnInit {
   term;
   isListe;
   cpns: any[];
+  view: boolean = false;
+  currentCarte: any;
   constructor(private afs: AngularFirestore, private router: Router) {}
 
   ngOnInit() {
@@ -37,5 +39,10 @@ getCpn() {
 }
 retour() {
   this.router.navigate(['carnetprenatal']);
+}
+
+voir(carte) {
+  this.currentCarte = carte;
+  this.view = true;
 }
 }

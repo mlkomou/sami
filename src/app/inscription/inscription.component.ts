@@ -27,18 +27,18 @@ export class InscriptionComponent implements OnInit {
     private afs:AngularFirestore,
     private afAuth: AngularFireAuth,
     private alertService: AlertService) { }
-  
+
   inscrire() {
-    if(this.Nom && 
-      this.Prenom && 
-      this.Profession && 
-      this.StatutPatiente && 
-      this.Tel && 
-      this.Date && 
+    if(this.Nom &&
+      this.Prenom &&
+      this.Profession &&
+      this.StatutPatiente &&
+      this.Tel &&
+      this.Date &&
       this.Password &&
       this.Email) {
       this.afAuth.auth.createUserWithEmailAndPassword(this.Email, this.Password).then(() =>{
-  
+
         this.afAuth.authState.subscribe((auth)=>{
           this.afs.collection('User').doc('profil').collection(auth.uid).doc(auth.uid).set({
             Nom: this.Nom,
@@ -50,7 +50,7 @@ export class InscriptionComponent implements OnInit {
             Password: this.Password,
             Statut: this.StatutPatiente,
           }),
-          
+
           this.afs.collection('utilisateurs').doc(auth.uid).set({
             Nom: this.Nom,
             Prenom: this.Prenom,
@@ -62,10 +62,10 @@ export class InscriptionComponent implements OnInit {
               Statut: this.StatutPatiente,
           }).then(() => {
             this.alertService.success('inscription effectuée avec succès');
-            this.router.navigate(['accueil']);
+            this.router.navigate(['connecter'], {replaceUrl: true});
           });
         });
-        
+
       }).catch((reponse) => {
         console.log(reponse);
         if(reponse.code == 'auth/network-request-failed'){
@@ -85,13 +85,13 @@ export class InscriptionComponent implements OnInit {
               }
             }
           }
-          
+
         }
       });
     } else {
       this.alertService.danger("tous les champs ne sont pas renseignés");
     }
- 
+
 }
 
 
@@ -103,9 +103,9 @@ export class InscriptionComponent implements OnInit {
    // this.alertService.danger('this is a danger alert');
   //  this.alertService.success('this is a success alert');
     //this.alertService.warning('this is a warning alert');
-    
+
     // For html messages:
   //  this.alertService.warning({html: '<b>This message is bold</b>'});
-//}    
+//}
 
 }

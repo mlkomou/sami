@@ -1,6 +1,7 @@
-<html>     
+<html>
             <!-- <section class="regervation_part section_padding"> -->
                   <div class="container">
+                    <ngx-alerts></ngx-alerts>
                     <div style="cursor: pointer;" class="col-lg-1 retour">
                         <i class="ti-arrow-left" (click)="retour()"></i>
                     </div>
@@ -9,7 +10,7 @@
                           <div class="col-lg-7">
                               <div class="regervation_part_iner">
                                   <form>
-                                      
+
                                             <div class="form-row">
                                           <div class="form-group col-md-12">
                                             <label for="titre">Titre</label>
@@ -21,15 +22,14 @@
                                               [(ngModel)]="Contenu" name="Contenu" placeholder="Contenu"></textarea>
                                           </div>
                                       </div>
-                                      
+
                                           <button class="btn btn-primary" style="margin-right: 20px;" (click)="Enregistrer()">Enregistrer</button>
                                           <button class="btn btn-primary " (click)="listeconseil()">Voir la liste</button>
                                   </form>
                               </div>
                           </div>
-                             
+
                       </div>
                   </div>
                <!-- </section> -->
 </html>
-  

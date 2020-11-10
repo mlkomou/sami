@@ -15,20 +15,22 @@
                     <thead>
                         <th>index</th>
                         <th>Titre</th>
-                        
-                        
+                        <th>Description</th>
+
+
                     </thead>
                     <tbody *ngFor="let conseil of  conseils; index as i">
                             <tr>
                             <td>{{i+1}}</td>
                             <td>{{conseil.Titre}}</td>
+                            <td>{{conseil.Conseil}}</td>
                         </tr>
                         <!-- <div *ngIf="EditState && rdvToedit.id == rdv.id" class="table table-bordered">
-    
+
                             <input type="text" class="form-control" [(ngModel)]="rdv.Nom" name="rdv.Nom" [ngModelOptions]="{standalone: true}">
                             <input type="text" class="form-control" [(ngModel)]="rdv.Prenom" name="rdv.Prenom" [ngModelOptions]="{standalone: true}">
                             <input type="text" class="form-control" [(ngModel)]="rdv.Medecin" name="rdv.Medecin" [ngModelOptions]="{standalone: true}">
-    
+
                             <button (lick)="update(rdv, rdv.id)" class="btn btn-success save">
                                 <i class="fa fa-update"></i>Mettre à jour
                             </button>

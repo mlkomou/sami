@@ -17,7 +17,7 @@ export class ConnecterComponent implements OnInit {
   Email: string;
   password: string;
 
-  constructor(private afAuth:AngularFireAuth, 
+  constructor(private afAuth:AngularFireAuth,
     private router:Router,
     private alertService: AlertService,
     private aft: AngularFirestore) { }
@@ -32,7 +32,7 @@ export class ConnecterComponent implements OnInit {
       if (user) {
         this.router.navigate(['accueil'], {replaceUrl: true});
         // localStorage.setItem('idCytoyen', user.uid);
-        
+
       } else {
         // localStorage.removeItem('idCytoyen')
         this.router.navigate(['connecter'], {replaceUrl: true});
@@ -52,6 +52,8 @@ export class ConnecterComponent implements OnInit {
         }))
       ).subscribe((profils) => {
         localStorage.setItem('currentUser', JSON.stringify(profils));
+        console.log("cknnn", profils);
+
         window.location.reload();
         // firebase.auth().onAuthStateChanged(user => {
         //   localStorage.setItem('userId', user.uid);
@@ -79,9 +81,9 @@ export class ConnecterComponent implements OnInit {
       }
     }
    });
-   
 
-   
+
+
 }
 inscription(){
   this.router.navigate(['inscription']);

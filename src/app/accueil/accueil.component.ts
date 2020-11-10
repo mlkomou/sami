@@ -16,22 +16,24 @@ import * as firebase from 'firebase';
 export class AccueilComponent implements OnInit {
 currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
 uid: string;
+user: any;
 
 
   constructor(private router:Router,
               private aft:AngularFirestore,
               private afAuth: AngularFireAuth,
-    ) { 
+    ) {
     }
 
   ngOnInit() {
+    this.user = this.currentUser[0];
     console.log(this.currentUser);
-    
+
   }
 
   saveMedecin() {
       this.router.navigate(['medecin'])
-      
+
   }
 
   conseil(){
@@ -50,7 +52,7 @@ uid: string;
     this.router.navigate(['aspectimportant'])
   }
   rendezvous(){
-    this.router.navigate(['listpatiente']) 
+    this.router.navigate(['listpatiente'])
   }
   forum(){
     this.router.navigate(['forum']);
@@ -75,12 +77,12 @@ uid: string;
     }
   listeconseil(){
     this.router.navigate(['listeconseil'])
-  }  
+  }
   Deconnecter(){
     this.afAuth.auth.signOut().then(() => {
       localStorage.removeItem('currentUser');
       this.router.navigate(['connecter']);
-     
+
     });
   }
 }

@@ -1,7 +1,7 @@
 <table class="table">
-        
+
     <thead>
-       
+
         <div style="cursor: pointer; margin-bottom: 30px;" class="row">
             <div class="col-lg-6">
                 <a class="btn_2" (click)="retour()">Retour</a>
@@ -21,6 +21,7 @@
         <th scope="col">Nom</th>
         <th scope="col">Date naissance</th>
         <th scope="col">Heure naissance</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +31,8 @@
         <td>{{med.patiente.Nom}}</td>
         <td> {{med.DateNaissance | date}} </td>
         <td> {{med.HeureNaissance}} </td>
+        <td> <i (click)="voir()" style="cursor: pointer;" class="fa fa-eye"></i> </td>
       </tr>
     </tbody>
-   
+
   </table>

@@ -37,6 +37,7 @@ import { DiscussionComponent } from './discussion/discussion.component';
 import { MenuComponent } from './menu/menu.component';
 import { AlertModule } from 'ngx-alerts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetailcpnComponent } from './detailcpn/detailcpn.component';
 
 // import { MatTableModule } from '@angular/material/table';
 
@@ -69,6 +70,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ListeCPNComponent,
     DiscussionComponent,
     MenuComponent,
+    DetailcpnComponent,
   
   ],
   imports: [

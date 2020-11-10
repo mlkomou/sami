@@ -34,7 +34,7 @@ export class ListeConseilComponent implements OnInit {
   constructor(private aft:AngularFirestore,
     private router:Router,
     private aftAuth:AngularFireAuth
-    ) { 
+    ) {
         this.uid = this.aftAuth.auth.currentUser.uid;
     }
 
@@ -49,9 +49,10 @@ export class ListeConseilComponent implements OnInit {
     ).subscribe((conseil) => {
       this.conseils = conseil;
       console.log(conseil);
-      
+
     });
   }
+
   Edit(event, listeconseil: User){
     this.EditState = true;
     this. ListeConseilToedit = listeconseil;
@@ -66,7 +67,7 @@ export class ListeConseilComponent implements OnInit {
     filterCondition(listeconseil){
     return listeconseil.Nom.toLowerCase().indexOf(this.searchText.toLocaleLowerCase()) != -1;
     }
-    
+
     Enregistrer(conseil) {
     this.router.navigate(['patiente', conseil.id, conseil.Titre, conseil.Contenu]);
     }
